@@ -1,0 +1,41 @@
+#searchBar{
+    width: 1000px;
+height: 50px;
+
+}
+#searchButton{
+    height: 55px;
+    width: 100px;
+}
+#searchDiv{
+    
+    display: flex;
+    justify-content: center;
+}
+#logForm{
+float: right;
+}
+
+#menuMapLeft{
+    float:left;
+    width: 45%;
+}
+#menuMapRight{
+    float:right;
+    width: 45%;
+}
+#mapWI1 {
+    float: right;
+    width: 80%;
+    height: 600px;
+    border: 1px solid black;
+}
+#mapWI2{
+    float:left;
+    width: 80%;
+    height: 600px;
+    border: 1px solid black;
+}
+#logButton{
+    float: right;
+}
