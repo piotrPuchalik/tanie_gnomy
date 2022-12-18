@@ -1,19 +1,17 @@
 #searchBar{
     width: 1000px;
-height: 50px;
-
+	height: 50px;
 }
 #searchButton{
     height: 55px;
     width: 100px;
 }
 #searchDiv{
-    
     display: flex;
     justify-content: center;
 }
 #logForm{
-float: right;
+	float: right;
 }
 
 #menuMapLeft{
@@ -24,17 +22,55 @@ float: right;
     float:right;
     width: 45%;
 }
-#mapWI1 {
-    float: right;
+#mapWI1{
+	float:right;
     width: 80%;
     height: 600px;
-    border: 1px solid black;
+}
+#picture_descryptionWI1{
+	float:right;
+	width:80%;
+}
+#div_pictureWI1{
+	float:right;
+	width:60%;
+	height: 400px;
+}
+#pictureWI1{
+	float:right;
+	height: 400px;
+}
+#descriptionWI1{
+	float:left;
+	width:30%;
+	height: 400px;
+	text-align:center;
+	font-size:30px;
 }
 #mapWI2{
-    float:left;
+	float:left;
     width: 80%;
     height: 600px;
-    border: 1px solid black;
+}
+#picture_descryptionWI2{
+	float:left;
+	width:80%;
+}
+#div_pictureWI2{
+	float:left;
+	width:60%;
+	height: 400px;
+}
+#pictureWI2{
+	float:left;
+	height: 400px;
+}
+#descriptionWI2{
+	float:right;
+	width:30%;
+	height: 400px;
+	text-align:center;
+	font-size:30px;
 }
 #logButton{
     float: right;
