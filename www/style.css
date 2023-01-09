@@ -25,7 +25,7 @@
 #mapWI1{
 	float:right;
     width: 80%;
-    height: 600px;
+    height: 500px;
 }
 #picture_descryptionWI1{
 	float:right;
@@ -38,19 +38,20 @@
 }
 #pictureWI1{
 	float:right;
+	width:100%;
 	height: 400px;
 }
 #descriptionWI1{
 	float:left;
 	width:30%;
 	height: 400px;
-	text-align:center;
+	text-align:left;
 	font-size:30px;
 }
 #mapWI2{
 	float:left;
     width: 80%;
-    height: 600px;
+    height: 500px;
 }
 #picture_descryptionWI2{
 	float:left;
@@ -63,13 +64,15 @@
 }
 #pictureWI2{
 	float:left;
+	width:100%;
 	height: 400px;
 }
 #descriptionWI2{
+	
 	float:right;
 	width:30%;
 	height: 400px;
-	text-align:center;
+	text-align:right;
 	font-size:30px;
 }
 #logButton{
