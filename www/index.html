@@ -7,9 +7,32 @@
         
         <meta name="description" content="Strona powitalna ¿Donde?">
         <title>¿Donde?</title>
+
+        <script src="index_js.js" defer></script>
+        <link rel="stylesheet" href="index_style.css" />
+        <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+        crossorigin=""
+      />
+      <script
+        src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+        integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+        crossorigin=""
+      ></script>
     </head>
 <body>
-
+    <main class="wrapper">
+        <div class="content">
+            <h1>Witaj w ¿Donde?</h1>
+            <button class="btn1">Wyszukiwarka</button>
+            <button class="btn2">Wybrór budynku</button>
+            <button class="btn3">Zaloguj się</button>
+        </div>    
+        <div id="menu-background-pattern"></div>
+        <div id="map"></div>
+      </main>
 </body>
 
 </html>
