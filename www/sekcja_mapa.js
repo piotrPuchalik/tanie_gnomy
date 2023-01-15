@@ -22,8 +22,8 @@ inicjalizacjaMapy(WI1_X,WI1_Y,WI1) // utworzenie mapy dla budynku WI1
 inicjalizacjaMapy(WI2_X,WI2_Y,WI2) // utworzenie mapy dla budynku WI2
 
 function planWI1(){
-	alert("do sekcji plan WI1");
+	window.open("plan_wi1.html", "_self");
 }
 function planWI2(){
-	alert("do sekcji plan WI2");
+	window.open("plan_wi2.html", "_self");
 }

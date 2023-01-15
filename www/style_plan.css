@@ -1,0 +1,14 @@
+#content{margin-left:5%;margin-right:5%;text-align:center;height:1000px;font-size:30px;}
+
+h1{font-size:60px;}
+#header{width:100%;}
+#menu{font-size:50px;float:left;width:19%;height:100%;line-height:350%;}
+#plan_wyniki{margin-top:2%;float:left;width:80%;height:100%;}
+#plan{height:60%;}
+#wyniki{height:40%;}
+
+ul,li{list-style:none;}
+ul{margin-right:4%;}
+li{border-top:2px solid #2327f5;border-left:2px solid #2327f5; border-right:2px solid #2327f5; background-color:#788fdc;}
+li:last-child{border-bottom:2px solid #2327f5;}
+li:hover{background-color:#1595f7;}
