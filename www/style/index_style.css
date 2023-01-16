@@ -27,8 +27,8 @@ body{
 
 
 .btn1 {
-    height: 4vw;
-    width: 11vw;
+    height: 10vh;
+    width: 10vw;
     padding:1.25rem 3rem;
 	box-shadow: 3px 4px 0px 0px #707070;
 	background-color:#1a936f;
@@ -38,8 +38,9 @@ body{
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:26px;
+	font-size:1.5vw;
 	padding:7px 25px;
+    text-align: center;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #e1e2ed;
     transition-duration: 300ms;
@@ -47,6 +48,7 @@ body{
     border-radius: 1.2rem;;
     font-weight: bold;
     letter-spacing: 0.05em;
+    margin-bottom: auto;
 }
 .btn1:hover {
 	background-color:#114c5f;
@@ -63,8 +65,8 @@ body{
 
 
 .btn2 {
-    height: 4vw;
-    width: 11vw;
+    height: 10vh;
+    width: 10vw;
     padding:1.25rem 3rem;
 	box-shadow: 3px 4px 0px 0px #707070;
 	background-color:#88D498;
@@ -74,8 +76,9 @@ body{
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:26px;
+	font-size:1.5vw;
 	padding:7px 25px;
+    text-align: center;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #e1e2ed;
     transition-duration: 300ms;
@@ -83,6 +86,7 @@ body{
     border-radius: 1.2rem;;
     font-weight: bold;
     letter-spacing: 0.05em;
+    margin-bottom: auto;
 }
 .btn2:hover {
 	background-color:#114c5f;
@@ -95,8 +99,8 @@ body{
 
 
 .btn3 {
-    height: 4vw;
-    width: 11vw;
+    height: 10vh;
+    width: 10vw;
     padding:1.25rem 3rem;
 	box-shadow: 3px 4px 0px 0px #707070;
 	background-color:#A6BB8D;
@@ -106,8 +110,9 @@ body{
 	cursor:pointer;
 	color:#ffffff;
 	font-family:Arial;
-	font-size:26px;
+	font-size:1.5vw;
 	padding:7px 25px;
+    text-align: center;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #e1e2ed;
     transition-duration: 300ms;
@@ -116,6 +121,7 @@ body{
     font-weight: bold;
     letter-spacing: 0.05em;
     color:white;
+    margin-bottom: 2vh;
 }
 .btn3:hover {
 	background-color:#114c5f;
@@ -142,10 +148,16 @@ body{
     background-color:  #ffffff75;
     
     border-radius: 50px;
-    height: 48%;
-    width: 17%;
+    height: auto;
+    width: 15vw;
 
 
+}
+
+h1 {
+    text-align: center;
+    margin-top: 1.2vh;
+    font-size: 2vw;
 }
 
 #menu-background-pattern {
