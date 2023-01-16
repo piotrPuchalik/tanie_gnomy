@@ -1,0 +1,84 @@
+CREATE TABLE pracownicy (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+	imie VARCHAR(255) NOT NULL,
+	nazwisko VARCHAR(255) NOT NULL,
+    haslo VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+	tytul VARCHAR(255) NOT NULL
+);
+
+INSERT INTO pracownicy (username, imie, nazwisko, haslo, email, tytul)
+VALUES ('pbuczynski', 'Piotr', 'Buczyński', 'admin', 'pbuczynski@zut.edu.pl', 'doktor inżynier');
+
+INSERT INTO pracownicy (username, imie, nazwisko, haslo, email, tytul)
+VALUES ('akarczmarczyk','Artur', 'Karczmarczyk','admin', 'artur.karczmarczyk@zut.edu.pl', 'doktor');
+
+INSERT INTO pracownicy (username, imie, nazwisko, haslo, email, tytul)
+VALUES ('msitek', 'Mikołaj', 'Sitek', 'admin', 'sm49395@zut.edu.pl', 'student');
+
+INSERT INTO pracownicy (username, imie, nazwisko, haslo, email, tytul)
+VALUES ('ppuchalik','Piotr', 'Puchalik', 'admin', 'pp49375@zut.edu.pl', 'student');
+
+INSERT INTO pracownicy (username, imie, nazwisko, haslo, email, tytul)
+VALUES ('abartman', 'Aleksander', 'Bartman', 'admin', 'ba46466@zut.edu.pl', 'student');
+
+CREATE TABLE admini (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL,
+	imie VARCHAR(255) NOT NULL,
+	nazwisko VARCHAR(255) NOT NULL,
+    haslo VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+	tytul VARCHAR(255) NOT NULL
+);
+
+INSERT INTO admini (username, imie, nazwisko, haslo, email, tytul)
+VALUES ('msitek', 'Mikołaj', 'Sitek', 'admin', 'sm49395@zut.edu.pl', 'student');
+
+
+INSERT INTO admini (username, imie, nazwisko, haslo, email, tytul)
+VALUES ('ppuchalik', 'Piotr', 'Puchalik', 'admin', 'pp49375@zut.edu.pl', 'student');
+
+
+CREATE TABLE pomieszczenia (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    numerSali INT(10) NOT NULL,
+    budynek VARCHAR(255) NOT NULL,
+    zastosowanie VARCHAR(255) NOT NULL
+);
+
+INSERT INTO pomieszczenia (numerSali, budynek, zastosowanie)
+VALUES (2, 'WI1', 'Aula');
+
+INSERT INTO pomieszczenia (numerSali, budynek, zastosowanie)
+VALUES (3, 'WI1', 'Sala Wykładowa');
+
+INSERT INTO pomieszczenia (numerSali, budynek, zastosowanie)
+VALUES (4, 'WI1', 'Sala Laboratoryjna');
+
+CREATE TABLE terminarz (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+	godzinaRozpoczecia time NOT NULL,
+	godzinaZakonczenia time NOT NULL,
+    pomieszczenia_id INT,
+    FOREIGN KEY (pomieszczenia_id) REFERENCES pomieszczenia(id)
+);
+
+INSERT INTO terminarz (`godzinaRozpoczecia`, `godzinaZakonczenia`)
+VALUES ('8:15:00','10:00:00');
+
+INSERT INTO terminarz (`godzinaRozpoczecia`, `godzinaZakonczenia`)
+VALUES ('10:15:00','12:00:00');
+
+INSERT INTO terminarz (`godzinaRozpoczecia`, `godzinaZakonczenia`)
+VALUES ('12:15:00','14:00:00');
+
+INSERT INTO terminarz (`godzinaRozpoczecia`, `godzinaZakonczenia`)
+VALUES ('14:15:00','16:00:00');
+
+INSERT INTO terminarz (`godzinaRozpoczecia`, `godzinaZakonczenia`)
+VALUES ('16:15:00','18:00:00');
+
+INSERT INTO terminarz (`godzinaRozpoczecia`, `godzinaZakonczenia`)
+VALUES ('18:15:00','20:00:00');
