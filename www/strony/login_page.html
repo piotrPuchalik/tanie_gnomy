@@ -1,24 +1,34 @@
-<!DOCTYPE HTML>
-    <hmtl lang="pl-PL">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../style/style_login.css" />
-        <meta name="description" content="Strona logowania do panelu administratora">
-        <title>¿Donde? - Login Page</title>
-    </head>
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <link rel="stylesheet" href="../style/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donde</title>
+    <link rel="shortcut icon" href="logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap"
+            rel="stylesheet"
+    />
+</head>
 <body>
-<div class="mainSite">
-<input type="text" placeholder="Login">
-<br>
-<input type="text" placeholder="Haslo">
-<br>
-<input type="submit" value="Zaloguj">
-</div>
-
-
-
+    <div>
+            <div class="logowanie">
+                <h1>Logowanie</h1>
+                <img type="shortLine" src="../grafiki/shortLine.svg" alt="error">
+            <form action="login.php" method="post">
+                <!-- <label for="username">Nazwa użytkownika:</label> -->
+                <input type="text" id="username" name="username" placeholder="Nazwa użytkownika" required>
+                <img type="longLine" src="../grafiki/longLine.svg" alt="error">
+                <!-- <label for="password">Hasło:</label> -->
+                <input type="password" id="password" name="password" placeholder="Hasło" required>
+                <img type="longLine" src="../grafiki/longLine.svg" alt="error">
+                <input type="submit" name="submit" value="Zaloguj">
+                <p id="error"></p>
+            </form>
+        </div>
+    </div>
 </body>
-
 </html>

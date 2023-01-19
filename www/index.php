@@ -37,9 +37,9 @@ $conn->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl-PL">
 <head>
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="../style/login.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Donde</title>
@@ -52,11 +52,21 @@ $conn->close();
     />
 </head>
 <body>
-<p>Logowanie</p>
-<form action="login.php" method="post">
-    Login: <input type="text" name="username"><br>
-    Hasło: <input type="password" name="password"><br>
-    <input type="submit" value="Zaloguj">
-</form>
+    <div>
+            <div class="logowanie">
+                <h1>Logowanie</h1>
+                <img type="shortLine" src="../grafiki/shortLine.svg" alt="error">
+            <form action="login.php" method="post">
+                <!-- <label for="username">Nazwa użytkownika:</label> -->
+                <input type="text" id="username" name="username" placeholder="Nazwa użytkownika" required>
+                <img type="longLine" src="../grafiki/longLine.svg" alt="error">
+                <!-- <label for="password">Hasło:</label> -->
+                <input type="password" id="password" name="password" placeholder="Hasło" required>
+                <img type="longLine" src="../grafiki/longLine.svg" alt="error">
+                <input type="submit" name="submit" value="Zaloguj">
+                <p id="error"></p>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
