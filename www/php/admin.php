@@ -54,13 +54,13 @@ Nazwisko: <input type="text" name="nazwisko"><br>
 Haslo: <input type="password" name="haslo"><br>
 Email: <input type="text" name="email"><br>
 Tytul: <input type="text" name="tytul"><br>
-    <input type="submit" name="submit" value="Add">
+    <input type="submit" name="buttonAdd2" value="Add">
 </form>';
 
 
 }
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['buttonAdd2'])) {
     $id = $_POST['id'];
     $username = $_POST['username'];
     $imie = $_POST['imie'];
@@ -101,27 +101,34 @@ if (isset($_POST['submit'])) {
 
     if (!$error) {
         $conn = mysqli_connect("localhost", "root", "", "projekt");
-        $sql = "INSERT INTO pracownicy (id, username, imie, nazwisko, haslo, email, tytul)
-        VALUES ('$id', '$username', '$imie', '$nazwisko', '$haslo', '$email', '$tytul')
-        ON DUPLICATE KEY UPDATE 
-        username = '$username', imie = '$imie', nazwisko = '$nazwisko', haslo = '$haslo', email = '$email', tytul = '$tytul' ";
+
+        $sql = "SELECT * FROM pracownicy WHERE id='$id'";
         $result = mysqli_query($conn, $sql);
-        if ($result) {
-            echo "New record created successfully";
+        if (mysqli_num_rows($result) > 0) {
+
+            echo'ID already exists in the database, please use a different ID';
         } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            $sql = "INSERT INTO pracownicy (id, username, imie, nazwisko, haslo, email, tytul)
+            VALUES ('$id', '$username', '$imie', '$nazwisko', '$haslo', '$email', '$tytul')
+            ON DUPLICATE KEY UPDATE 
+            username = '$username', imie = '$imie', nazwisko = '$nazwisko', haslo = '$haslo', email = '$email', tytul = '$tytul' ";
+            $result = mysqli_query($conn, $sql);
+            if ($result) {
+                echo "New record created successfully";
+            } else {
+                echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+            }
+            header("location:admin.php");
+            mysqli_close($conn);
         }
-        header("location:admin.php");
-        mysqli_close($conn);
     }
 }
-
 
 if(isset($_POST['buttonDelete']))
     {
         echo '<form method="post">
        Id: <input type="text" name="inputID">
-       <input type="submit" name="submitID" value="Submit">
+       <input type="submit" name="buttonDelete2" value="Submit">
     </form>';
     }
 if (isset($_POST['inputID'])) {
@@ -146,11 +153,90 @@ if (isset($_POST['inputID'])) {
         }
     else
         {
-            $message = "Id doesnt exists";
-            echo "<script type='text/javascript'>alert('$message');</script>";
+            /*$message = "Id doesnt exists";
+            echo "<script type='text/javascript'>alert('$message');</script>";*/
+            echo 'ID doesnt exists';
         }
     }
 }
+
+
+
+if(isset($_POST['buttonEdit'])) {
+
+    echo '<form method="post">
+    ID: <input type="text" name="id"><br>
+    Username: <input type="text" name="username"><br>
+    Imie: <input type="text" name="imie"><br>
+    Nazwisko: <input type="text" name="nazwisko"><br>
+    Haslo: <input type="password" name="haslo"><br>
+    Email: <input type="text" name="email"><br>
+    Tytul: <input type="text" name="tytul"><br>
+    <input type="submit" name="buttonEdit2" value="Edit">
+</form>';
+
+}
+if (isset($_POST['buttonEdit2'])) {
+        $id = $_POST['id'];
+        $username = $_POST['username'];
+        $imie = $_POST['imie'];
+        $nazwisko = $_POST['nazwisko'];
+        $haslo = $_POST['haslo'];
+        $email = $_POST['email'];
+        $tytul = $_POST['tytul'];
+
+        $error = false;
+        if (empty($id)) {
+            echo "ID is required <br>";
+            $error = true;
+        }
+        if (empty($username)) {
+            echo "Username is required <br>";
+            $error = true;
+        }
+        if (empty($imie)) {
+            echo "Imie is required <br>";
+            $error = true;
+        }
+        if (empty($nazwisko)) {
+            echo "Nazwisko is required <br>";
+            $error = true;
+        }
+        if (empty($haslo)) {
+            echo "Haslo is required <br>";
+            $error = true;
+        }
+        if (empty($email)) {
+            echo "Email is required <br>";
+            $error = true;
+        }
+        if (empty($tytul)) {
+            echo "Tytul is required <br>";
+            $error = true;
+        }
+        if (!$error) {
+            $conn = mysqli_connect("localhost", "root", "", "projekt");
+            $sql = "SELECT * FROM pracownicy WHERE id='$id'";
+            $result = mysqli_query($conn, $sql);
+            if (mysqli_num_rows($result) > 0) {
+                $sql = "UPDATE pracownicy SET username='$username', imie='$imie', nazwisko='$nazwisko', haslo='$haslo', email='$email', tytul='$tytul' WHERE id='$id'";
+                $result = mysqli_query($conn, $sql);
+                if ($result) {
+                    echo "Record updated successfully";
+                    header("location:admin.php");
+
+                } else {
+                    echo "Error updating record: " . mysqli_error($conn);
+                }
+            } else {
+                echo "ID does not exist in the database";
+            }
+            mysqli_close($conn);
+        }
+    }
+
+
+
 ?>
 <style>
     table, th, td {
