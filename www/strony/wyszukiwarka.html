@@ -15,11 +15,11 @@
     <!--<label for="myCheck">Checkbox:</label> 
     <input type="checkbox" id="myCheck" onclick="myFunction()">
     <br>-->
-    <form>
-    <input type="radio" id="pracownik" >Pracownik</input>
+    <div>
+    <input type="radio" name="przycisk" id="pracownik" onclick="showPracownik()" >Pracownik</input>
     <br>
-    <input type="radio" id="sala" >Sala</input>
-    </form>
+    <input type="radio" name="przycisk" id="sala"  onclick="showSala()">Sala</input>
+    </div>
 <div id="employeeList" class="employeeList" style="display: none;">
     <form action="action.php" method="get">
        <div class="">
@@ -85,29 +85,46 @@
     const targetDiv2 = document.getElementById("roomList");
         const btn2 = document.getElementById("sala");
         
-        btn.onclick = function () {
+       // btn.onclick = function () 
+    //     if(btn.checked){
 
-            if (targetDiv.style.display !== "none") {
-            targetDiv.style.display = "none";
-        } 
-        else {
+    //         //if (targetDiv.style.display !== "none") {
+    //         //targetDiv.style.display = "none";
+    //     targetDiv.style.display = "block";
+    //         }
+    //     else {
+    // targetDiv.style.display = "block";
+    
+
+    //};
+
+function showPracownik()
+{
     targetDiv.style.display = "block";
-    }
-    };
-    document.getElementById('employeeList').onclick = function() {
-    var radio = document.querySelector('input[type=radio][name=language]:checked');
-    radio.checked = false;
+    targetDiv2.style.display = "none";
+
 };
-        btn2.onclick = function () {
+
+    //document.getElementById('employeeList').onclick = function() {
+    //var radio = document.querySelector('input[type=radio][name=language]:checked');
+    //radio.checked = false;
+    //};
+    //     btn2.onclick = function () {
 
 
-        if (targetDiv2.style.display !== "none") {
-            targetDiv2.style.display = "none";
-        } 
-        else {
+    //     if (targetDiv2.style.display !== "none") {
+    //         targetDiv2.style.display = "none";
+    //     } 
+    //     else {
+    // targetDiv2.style.display = "block";
+    // }
+    // };
+    function showSala()
+{
+    targetDiv.style.display = "none";
     targetDiv2.style.display = "block";
-    }
-    };
+
+};
 
 
     </script>
