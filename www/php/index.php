@@ -9,18 +9,29 @@ session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "projekt";
+$dbname = "donde";
 
 $conn = new mysqli("$servername", $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo '<p>Logowanie</p>
-<form action="" method="post">
-    Login: <input type="text" name="username"><br>
-    Hasło: <input type="password" name="password"><br>
-    <input type="submit" value="Zaloguj">
-</form>';
+echo '
+<div class="wrapper">
+    <div class="logowanie">
+        <h1>Logowanie</h1>
+        <img type="shortLine" src="../grafiki/shortLine.svg" alt="error">
+        <form action="" method="post">
+            <!-- <label for="username">Nazwa użytkownika:</label> -->
+            <input type="text" id="username" name="username" placeholder="Login" required>
+            <img type="longLine" src="../grafiki/longLine.svg alt="error">
+            <!-- <label for="password">Hasło:</label> -->
+            <input type="password" id="password" name="password" placeholder="Hasło" required>
+            <img type="longLine" src="../grafiki/longLine.svg" alt="error">
+            <input type="submit" name="submit" value="Zaloguj">
+            <p id="error"></p>
+        </form>
+    </div>
+</div>';
 // pobranie danych z formularza
 if(isset($_POST['username']) && isset($_POST['password'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -54,12 +65,12 @@ $conn->close();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl-PL">
 <head>
-    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="../style/login.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Donde</title>
+    <title>¿Donde? - Login page</title>
     <link rel="shortcut icon" href="logo.svg">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

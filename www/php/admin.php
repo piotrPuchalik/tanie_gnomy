@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "projekt";
+$dbname = "donde";
 
 $conn = new mysqli("$servername", $username, $password, $dbname);
 if ($conn->connect_error) {
@@ -100,7 +100,7 @@ if (isset($_POST['buttonAdd2'])) {
     }
 
     if (!$error) {
-        $conn = mysqli_connect("localhost", "root", "", "projekt");
+        $conn = mysqli_connect("localhost", "root", "", "donde");
 
         $sql = "SELECT * FROM pracownicy WHERE id='$id'";
         $result = mysqli_query($conn, $sql);
@@ -215,7 +215,7 @@ if (isset($_POST['buttonEdit2'])) {
             $error = true;
         }
         if (!$error) {
-            $conn = mysqli_connect("localhost", "root", "", "projekt");
+            $conn = mysqli_connect("localhost", "root", "", "donde");
             $sql = "SELECT * FROM pracownicy WHERE id='$id'";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
@@ -264,7 +264,7 @@ if(isset($_FILES["file"])) {
 
     $file = fopen("pracownicy.csv", "r");
 
-    $conn = mysqli_connect("localhost", "root", "", "projekt");
+    $conn = mysqli_connect("localhost", "root", "", "donde");
 
     /*while (($data = fgetcsv($file, 1000, ',')) !== FALSE) {
 
