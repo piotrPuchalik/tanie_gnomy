@@ -52,13 +52,13 @@ $conn->close();
     />
 </head>
 <body>
-    <div>
-            <div class="logowanie">
-                <h1>Logowanie</h1>
-                <img type="shortLine" src="../grafiki/shortLine.svg" alt="error">
+    <div class='wrapper'>
+        <div class="logowanie">
+            <h1>Logowanie</h1>
+            <img type="shortLine" src="../grafiki/shortLine.svg" alt="error">
             <form action="login.php" method="post">
                 <!-- <label for="username">Nazwa użytkownika:</label> -->
-                <input type="text" id="username" name="username" placeholder="Nazwa użytkownika" required>
+                <input type="text" id="username" name="username" placeholder="Login" required>
                 <img type="longLine" src="../grafiki/longLine.svg" alt="error">
                 <!-- <label for="password">Hasło:</label> -->
                 <input type="password" id="password" name="password" placeholder="Hasło" required>

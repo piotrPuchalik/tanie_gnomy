@@ -45,6 +45,7 @@ button {
     margin-top: 2.4vh;
     margin-left: 3vw;
     border-radius:15px;
+    padding: 10px 0;
 	color:#ffffff;
 	font-family: 'Poppins';
 	font-size: 1.5vw;
@@ -52,8 +53,6 @@ button {
     text-align: center;
 	text-transform: uppercase;
     letter-spacing: 0.05em;
-
-    transition-duration: 300ms;
 
     border: none;
     box-shadow: 3px 4px 0px 0px #707070;
