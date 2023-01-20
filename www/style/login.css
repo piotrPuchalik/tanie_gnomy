@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,800');
 
 * {
-	box-sizing: border-box;
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
 }
 
 body {
@@ -10,31 +12,35 @@ body {
     background-attachment: fixed;
     background-size: cover;
 
-    width: auto;
-	height: auto;
-    margin: auto;
-
     font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {  
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
 }
 
 .logowanie {
     position: fixed;
-    right: 14vw;
-    top: 20vh;
     justify-content: center;
-    text-align: center;
-    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    height: 60vh;
+    width: 18vw;
+    min-height: 520px;
+    right: 15vw;
+    z-index: 10;
     border-radius: 50px;
-    padding:20px;
-    width: 22vw;
-    min-width: 320px;
-    height: 64vh;
-    min-height: 400px;
+    background-color: #ffffff;
     /* filter: drop-shadow(6px 4px 20px rgba(0, 0, 0, 0.2)); */
 }
 
 form {
-    margin-top: 3vh;
+    margin-top: 6vh;
     border: none;
     border-color: transparent;
 }
@@ -50,20 +56,24 @@ input:-webkit-autofill:active  {
 h1{
     color: #292929;
     font-weight: bold;
-    font-size: 6vh;
+    font-size: 3vw;
     margin-bottom: 16px;
 }
 
 img[type=shortLine] {
+    justify-content: center;
+    margin-left: 1vw;
     margin-top: -16px;
     vertical-align:top;
-    width: 30vh;
+    width: 15vw;
 }
 
 img[type=longLine] {
+    justify-content: center;
     margin-top: -16px;
     vertical-align:top;
-    width: 36vh;
+    width: 18vw;
+    height: 6px;
 }
 
 p {
@@ -77,19 +87,21 @@ p {
 
 input[type=submit] {
 	background: linear-gradient(235.96deg, #1D4DF7 -348.67%, #7BF99E 383.95%);
-    border-radius: 50px;
-	color: #FFFFFF;
-    width: 12vw;
-    height: 8vh;
-	min-width: 160px;
-	min-height: 50px;
-	font-size: 1.7vw;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	line-height: 0;
+    margin-top: 3vh;
+    margin-left: 3vw;
+    border-radius:50px;
+    padding: 2vh 2vw;
+	color:#ffffff;
+	font-family: 'Poppins';
+	font-size: 1.5vw;
+    font-weight: bold;
     text-align: center;
-    margin: auto;
-    margin-top: 1vh;
+	text-transform: uppercase;
+    letter-spacing: 0.05em;
+
+    border: none;
+    box-shadow: 3px 4px 0px 0px #707070;
+    text-shadow:0px 1px 0px #e1e2ed;
 	filter: drop-shadow(6px 4px 20px rgba(0, 0, 0, 0.2));
 }
 
