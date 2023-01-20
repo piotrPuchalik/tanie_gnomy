@@ -237,6 +237,57 @@ if (isset($_POST['buttonEdit2'])) {
 
 
 
+//Import
+echo'<br>';
+echo'<form action="" method="post" name="frmCSVImport" id="frmCSVImport"
+	enctype="multipart/form-data" onsubmit="return validateFile()">
+	<div Class="input-row">
+		<label>Choose your file. </label> 
+		<input type="file" name="file" id="file"
+			class="file" accept=".csv,.xls,.xlsx">
+			<br>
+			<button type="submit" id="submit" name="buttonImport" class="btn-submit">Import
+				CSV and Save Data</button>
+	</div>
+</form>';
+
+if(isset($_FILES["file"])) {
+    $file_path = $_FILES["file"]["tmp_name"];
+    if (file_exists($file_path)) {
+        $status=unlink('pracownicy.csv');
+        $new_file_path = "C:/xampp/htdocs/php/pracownicy.csv";
+        move_uploaded_file($file_path, $new_file_path);
+    } else {
+        echo "The file doesn't exist in the server";
+    }
+
+
+    $file = fopen("pracownicy.csv", "r");
+
+    $conn = mysqli_connect("localhost", "root", "", "projekt");
+
+    /*while (($data = fgetcsv($file, 1000, ',')) !== FALSE) {
+
+        if(isset($data[0]) && isset($data[1]) && isset($data[2])&&isset($data[3])&&isset($data[4])&&isset($data[5])&&isset($data[6])){
+            $sql = "INSERT INTO pracownicy (id, username, imie, nazwisko, haslo, email, tytul) VALUES ('$data[0]', '$data[1]', '$data[2]','$data[3]','$data[4]','$data[5]','$data[6]')";
+            mysqli_query($conn, $sql);
+        }
+    }*/
+    if (($handle = fopen("pracownicy.csv", "r")) !== FALSE) {
+        $n = 1;
+        while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
+
+            // SQL query to store data in
+            // database our table name is
+            // table2
+            $sql = 'INSERT INTO pracownicy (id, username, imie, nazwisko, haslo, email, tytul) VALUES ("' . $row[0] . '","' . $row[1] . '","' . $row[2] . '","' . $row[3] . '","' . $row[4] . '","' . $row[5] . '","' . $row[6] . '") ON DUPLICATE KEY UPDATE id = "'.$row[0].'", username = "'.$row[1].'", imie = "'.$row[2].'", nazwisko = "'.$row[3].'", haslo = "'.$row[4].'", email = "'.$row[5].'",tytul = "'.$row[6].'"';
+            mysqli_query($conn, $sql);
+        }
+        fclose($file);
+        mysqli_close($conn);
+        header("location:admin.php");
+    }
+}
 ?>
 <style>
     table, th, td {
