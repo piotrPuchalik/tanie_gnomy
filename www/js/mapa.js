@@ -12,8 +12,8 @@ function inicjalizacjaMapy(x,y,div)
 
 WI1=document.getElementById('mapWI1');
 WI2=document.getElementById('mapWI2');
-WI1_X=53.447174		//współrzędna geograficzna X budynku WI1
-WI1_Y=14.491944		//współrzędna geograficzna Y budynku WI1
+WI1_X=53.447074		//współrzędna geograficzna X budynku WI1
+WI1_Y=14.492164		//współrzędna geograficzna Y budynku WI1
 WI2_X=53.448602		//współrzędna geograficzna X budynku WI2
 WI2_Y=14.491277		//współrzędna geograficzna Y budynku WI2
 
