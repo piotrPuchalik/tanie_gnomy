@@ -15,23 +15,7 @@ $conn = new mysqli("$servername", $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo '
-<div class="wrapper">
-    <div class="logowanie">
-        <h1>Logowanie</h1>
-        <img type="shortLine" src="../grafiki/shortLine.svg" alt="error">
-        <form action="" method="post">
-            <!-- <label for="username">Nazwa użytkownika:</label> -->
-            <input type="text" id="username" name="username" placeholder="Login" required>
-            <img type="longLine" src="../grafiki/longLine.svg alt="error">
-            <!-- <label for="password">Hasło:</label> -->
-            <input type="password" id="password" name="password" placeholder="Hasło" required>
-            <img type="longLine" src="../grafiki/longLine.svg" alt="error">
-            <input type="submit" name="submit" value="Zaloguj">
-            <p id="error"></p>
-        </form>
-    </div>
-</div>';
+
 // pobranie danych z formularza
 if(isset($_POST['username']) && isset($_POST['password'])) {
     $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -57,12 +41,17 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
         header('Location: admin.php');
     } else {
         // W przeciwnym razie wyświetlamy błąd
-        echo "error: Invalid username or password";
+        //echo "error: Invalid username or password";
+        //echo'<p id="error">Nieprawdiłowy login lub hasło</p>';
+        $flaga = true;
+        echo'<div id="example" data-php-variable="true"></div>';
+
     }
 }
 
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pl-PL">
@@ -80,6 +69,29 @@ $conn->close();
     />
 </head>
 <body>
+<div class="wrapper">
+    <div class="logowanie">
+        <h1>Logowanie</h1>
+        <img type="shortLine" src="../grafiki/shortLine.svg" alt="error">
+        <form action="" method="post">
+            <!-- <label for="username">Nazwa użytkownika:</label> -->
+            <input type="text" id="username" name="username" placeholder="Login" required>
+            <img type="longLine" src="../grafiki/longLine.svg" alt="error">
+            <!-- <label for="password">Hasło:</label> -->
+            <input type="password" id="password" name="password" placeholder="Hasło" required>
+            <img type="longLine" src="../grafiki/longLine.svg" alt="error">
+            <p id="error">Nieprawidłowy login lub hasło</p>
+            <input type="submit" name="submit" value="Zaloguj">
+        </form>
+    </div>
 
+</div>
+<script type="text/javascript">
+    var phpVariable = document.getElementById("example").getAttribute("data-php-variable");
+    if(phpVariable == "true")
+    {
+        document.getElementById("error").style.display = "block";
+    }
+</script>
 </body>
 </html>
