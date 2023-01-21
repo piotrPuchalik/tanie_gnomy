@@ -1,17 +1,13 @@
-#searchBar{
-    width: 1000px;
-	height: 50px;
+* {
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
 }
-#searchButton{
-    height: 55px;
-    width: 100px;
-}
-#searchDiv{
-    display: flex;
-    justify-content: center;
-}
-#logForm{
-	float: right;
+
+body {
+    font-family: 'Poppins', sans-serif;
+	width: 100vw;
+	height: 100vh;
 }
 
 #menuMapLeft{
@@ -24,7 +20,7 @@
 }
 #mapWI1{
 	float:right;
-    width: 80%;
+    width: 800px;
     height: 500px;
 }
 #picture_descryptionWI1{
@@ -74,7 +70,4 @@
 	height: 400px;
 	text-align:right;
 	font-size:30px;
-}
-#logButton{
-    float: right;
 }

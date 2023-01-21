@@ -14,30 +14,19 @@
 		<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
 			integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
 			crossorigin=""></script>
-    </head>
+		<link rel="shortcut icon" href="/grafiki/logo.png" sizes="100x100">
+		</head>
 <body>
-    <div>
-        <button type="sumbit" id="logButton" onClick="location.href='logForm.html'">Zaloguj sie</button>
-    </div>
-<br>
-<div id = "searchDiv">
-    <div>
-        <input type ="text" name="searchBar" id="searchBar" placeholder="Wyszukaj użytkownika/klase">
-        <button type="submit" id="searchButton">Search</button> 
-    </div>    
-</div>
-<br>
-<div id="menuMapLeft" >
-	<div id="picture_descryptionWI1">
-		<div id = "descriptionWI1">
-			<p> Budynek wydziału informatyki - WI1</p>
-			<p> Żołnierska 49, 71-210 Szczecin </p>
-		</div>
-		<div id = "div_pictureWI1" onClick="planWI1()">
-			<img src="../grafiki/WI1.jpg" id="pictureWI1">
-		</div>
-	</div>	
-	<div id = "mapWI1">
+	<div id="wrapper" >
+		
+				<p> Budynek wydziału informatyki - WI1</p>
+				<p> Żołnierska 49, 71-210 Szczecin </p>
+
+			<div id = "div_pictureWI1" onClick="planWI1()">
+				<img src="../grafiki/WI1.jpg" id="pictureWI1">
+
+		</div>	
+		<div id = "mapWI1">
 	</div>
 		
 </div>
