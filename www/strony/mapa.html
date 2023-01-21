@@ -1,50 +1,44 @@
 <!DOCTYPE HTML>
-    <html lang="pl-PL">
-    <head>
-        <meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <link rel="stylesheet" href="../style/mapa.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pl-PL">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="../style/mapa.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		<meta name="description" content="Wybor budynku WI ZUT">
-        <title>¿Donde? - Wybór budynku</title>
+	<meta name="description" content="Wybor budynku WI ZUT">
+	<title>¿Donde? - Wybór budynku</title>
 
-		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" 
-			integrarity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="">
-		<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
-			integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
-			crossorigin=""></script>
-		<link rel="shortcut icon" href="/grafiki/logo.png" sizes="100x100">
-		</head>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" 
+		integrarity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="">
+	<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+		integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+		crossorigin=""></script>
+	<link rel="shortcut icon" href="/grafiki/logo.png" sizes="100x100">
+</head>
 <body>
-	<div id="wrapper" >
-		
-				<p> Budynek wydziału informatyki - WI1</p>
-				<p> Żołnierska 49, 71-210 Szczecin </p>
+	<div class="fullpage" >
+			<div class = "wi">
+				<a href="plan_wi1.html">
+					<div class= "content">
+						<img class="budynek" src="../grafiki/WI1.jpg" alt="Budynek WI1">
+						<p> Budynek wydziału informatyki - WI1 </br> Żołnierska 49, 71-210 Szczecin </p>
+					</div>
+				</a>
+				<div id = "mapWI1"></div>
+			</div>
 
-			<div id = "div_pictureWI1" onClick="planWI1()">
-				<img src="../grafiki/WI1.jpg" id="pictureWI1">
-
-		</div>	
-		<div id = "mapWI1">
+			<div class = "wi">
+				<a href="plan_wi2.html">
+					<div class= "content">
+						<img class="budynek" src="../grafiki/WI2.jpg" alt="Budynek WI2">
+						<p> Budynek wydziału informatyki - WI2 </br> Żołnierska 52, 71-210 Szczecin </p>
+					</div>
+				</a>
+					<div id = "mapWI2"></div>
+			</div>
+		<script src="../js/mapa.js"> </script>
 	</div>
-		
-</div>
-<div id="menuMapRight">
-	<div id="picture_descryptionWI2">
-		<div id = "descriptionWI2">
-			<p> Budynek wydziału informatyki - WI2 </p>
-			<p> Żołnierska 52, 71-210 Szczecin </p>
-		</div>
-		<div id="div_pictureWI2" onClick="planWI2()">
-			<img src="../grafiki/WI2.jpg" id="pictureWI2">
-		</div>
-	</div>
-	<div id = "mapWI2">
-	</div>
-	
-</div>
-<script src="../js/mapa.js"> </script>
 </body>
 
 </html>
