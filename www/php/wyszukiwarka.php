@@ -274,33 +274,7 @@ else if(isset($_GET['imie']) && isset($_GET['nazwisko'])) {
     var today = year + "-" + month + "-" + day;
     document.getElementById("date2").value = today;
 </script>
-<script>
-    const targetDiv = document.getElementById("employeeList");
-    const btn = document.getElementById("pracownik");
-    const targetDiv2 = document.getElementById("roomList");
-    const btn2 = document.getElementById("sala");
-    let tabelaDane = document.getElementById("tabelaDane");
-    function showPracownik()
-    {
-        targetDiv.style.display = "block";
-        targetDiv2.style.display = "none";
 
-
-        tabelaDane.remove();
-    };
-
-
-    function showSala()
-    {
-        targetDiv.style.display = "none";
-        targetDiv2.style.display = "block";
-
-        tabelaDane.remove();
-
-    };
-
-
-</script>
 <style>
 
     th, td {
@@ -313,7 +287,7 @@ else if(isset($_GET['imie']) && isset($_GET['nazwisko'])) {
 
 <div id="content">
 
-    <div id="tabelaHeader" > <h1>
+    <div id="tabelaHeader"> <h1>
             <?php
             $conn = new PDO("mysql:host=localhost;dbname=donde","root","");
             if(isset($_GET['budynek']) && isset($_GET['sala']))
@@ -389,13 +363,46 @@ else if(isset($_GET['imie']) && isset($_GET['nazwisko'])) {
     </div>
 </div>
     <script>
+
+            const targetDiv = document.getElementById("employeeList");
+            const btn = document.getElementById("pracownik");
+            const targetDiv2 = document.getElementById("roomList");
+            const btn2 = document.getElementById("sala");
+            let tabelaDane = document.getElementById("tabelaDane");
+
+            const tabela_header = document.getElementById("tabelaHeader");
+            const plan = document.getElementById("plan");
+
+            tabela_header.style.display="none";
+            plan.style.display="none";
+            function showPracownik()
+            {
+                targetDiv.style.display = "block";
+                targetDiv2.style.display = "none";
+                tabela_header.style.display = "none";
+                plan.style.display = "none";
+
+
+                tabelaDane.remove();
+            };
+
+
+            function showSala()
+            {
+                targetDiv.style.display = "none";
+                targetDiv2.style.display = "block";
+                tabela_header.style.display = "none";
+                plan.style.display = "none";
+                tabelaDane.remove();
+
+            };
+
+
         function funkcja() {
-            var tabela = document.getElementById("tabelaHeader");
-            tabela.classList.add("tabela-content");
-            tabela.remove("content-stary")
-            var tabela2 =document.getElementById("tabelka");
-            tabela2.classList.add("tabela-header");
-            tabela.remove("tabelka-stary")
+
+
+            tabela_header.style.display = "block";
+            plan.style.display = "block";
 
 
         }

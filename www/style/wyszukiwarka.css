@@ -19,19 +19,3 @@ body{
     width: 100vw;
 }
 
-div.content-stary{
-    display: none;
-}
-
-#tabelaHeader.tabelka-stary{
-    background-color: red;
-    display: none;
-}
-
-
-div.content{
-    display:block;
-}
-#tabelaHeadera.tabela-header{
-    display: block;
-}
