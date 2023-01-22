@@ -8,22 +8,33 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+	background-image: url('../grafiki/tlo_bez_logo.svg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
 	width: 100vw;
 	height: 100vh;
-
-	background: linear-gradient(178.61deg, #00C26B 0.25%, #001FCA 107.82%);; 
 }
 
 .wi{
 	width: 36vw;
 	height: auto;
 	float:left;
-	background: #dffce7; 
-	margin-left: 7vw;
-	margin-right: 7vw;
+	background: transparent; 
 	margin-top: 2vh;
 	border-radius: 50px;
 	box-shadow: 5px 0px 20px rgba(0, 0, 0, 0.2);
+}
+
+.wi1 {
+	margin-left: 9vw;
+	margin-right: 5vw;
+}
+
+.wi2 {
+	margin-left: 5vw;
+	margin-right: 9vw;
 }
 
 .content{
