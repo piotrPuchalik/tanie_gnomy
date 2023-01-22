@@ -168,7 +168,7 @@ $sql =  "   SELECT pomieszczenia.numerSali, pomieszczenia.budynek,pracownicy.imi
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-             
+        <link rel="shortcut icon" href="../grafiki/logo.png" sizes="100x100">
 
 
         <meta name="description" content="Wyszukiwarka pracowników i pomieszczeń WI ZUT">
