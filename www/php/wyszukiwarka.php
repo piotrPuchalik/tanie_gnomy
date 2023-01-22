@@ -130,7 +130,9 @@ $roomNumber = mysqli_real_escape_string($conn, $_POST['roomNumber']);
         $time2 = '10:15-12:00';
     }
 
-$sql =  "   SELECT pomieszczenia.numerSali, pomieszczenia.budynek,pracownicy.imie, pracownicy.nazwisko, zajecia.godziny, zajecia.data FROM zajecia JOIN pomieszczenia ON zajecia.id_sali = pomieszczenia.id JOIN pracownicy ON zajecia.id_pracownika = pracownicy.id WHERE pomieszczenia.numerSali = '$roomNumber' AND pomieszczenia.budynek = '$buildingNumber' AND zajecia.data = '$date' AND zajecia.godziny = '$time' OR zajecia.godziny='$time2';";
+
+
+$sql =  "   SELECT pomieszczenia.numerSali, pomieszczenia.budynek,pracownicy.imie, pracownicy.nazwisko, zajecia.godziny, zajecia.data FROM zajecia JOIN pomieszczenia ON zajecia.id_sali = pomieszczenia.id JOIN pracownicy ON zajecia.id_pracownika = pracownicy.id WHERE pomieszczenia.numerSali = '$roomNumber' AND pomieszczenia.budynek = '$buildingNumber' AND zajecia.data = '$date' AND zajecia.godziny = '$time' OR zajecia.godziny='$time2'";
 
 
     $result = $conn->query($sql);

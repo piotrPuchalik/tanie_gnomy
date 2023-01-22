@@ -254,15 +254,18 @@ echo'<form action="" method="post" name="frmCSVImport" id="frmCSVImport"
 if(isset($_FILES["file"])) {
     $file_path = $_FILES["file"]["tmp_name"];
     if (file_exists($file_path)) {
-        $status=unlink('pracownicy.csv');
-        $new_file_path = "C:/xampp/htdocs/php/pracownicy.csv";
-        move_uploaded_file($file_path, $new_file_path);
+        //if($_FILES["file"]["name"] == "pracownicy.csv"
+            $status=unlink('pracownicy.csv');
+            $new_file_path = "C:/xampp/htdocs/tanie_gnomy/www/php/pracownicy.csv"; //jeszczer raz hehe
+            move_uploaded_file($file_path, $new_file_path);
+            $file = fopen("pracownicy.csv", "r");
+            $string = "pracownicy,csv";
+
+
     } else {
         echo "The file doesn't exist in the server";
     }
 
-
-    $file = fopen("pracownicy.csv", "r");
 
     $conn = mysqli_connect("localhost", "root", "", "donde");
 
