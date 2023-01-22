@@ -102,6 +102,6 @@
 				</div>
 		</div>
 	</div>
-	<script src="plan_wi1.js"> </script>       
+	<script src="../js/plan_wi1.js"> </script>       
 	</body>
 </html>
