@@ -6,7 +6,7 @@
 		<link rel="stylesheet" href="../style/plan.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <meta name="description" content="Plan WI1">
+        <meta name="description" content="Plan budynku WI1">
         <title>¿Donde? - Budynek WI1</title>
 		<link rel="shortcut icon" href="../grafiki/logo.png" sizes="100x100">
     </head>

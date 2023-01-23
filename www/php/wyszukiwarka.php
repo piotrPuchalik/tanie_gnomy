@@ -44,9 +44,7 @@ function function1(){
 
     $sql = "SELECT pomieszczenia.numerSali, pomieszczenia.budynek, zajecia.godzina_rozpoczecia,zajecia.godzina_zakonczenia, zajecia.nazwa_przedmiotu, pracownicy.nazwisko
 FROM zajecia JOIN pomieszczenia ON zajecia.id_sali = pomieszczenia.id JOIN pracownicy ON zajecia.id_pracownika = pracownicy.id 
-WHERE (pracownicy.imie = '$employeeName' AND pracownicy.nazwisko = '$employeeSurname' AND zajecia.data ='$date'AND pracownicy.id = zajecia.id_pracownika AND zajecia.id_sali = pomieszczenia.id AND zajecia.godzina_rozpoczecia ='$time1' AND zajecia.godzina_zakonczenia ='$time2')
-   OR
-(pracownicy.imie = '$employeeName' AND pracownicy.nazwisko = '$employeeSurname' AND zajecia.data ='$date' AND  pracownicy.id = zajecia.id_pracownika AND zajecia.id_sali = pomieszczenia.id AND  zajecia.godzina_rozpoczecia ='$time3' AND zajecia.godzina_zakonczenia ='$time4')";
+WHERE (pracownicy.imie = '$employeeName' AND pracownicy.nazwisko = '$employeeSurname' AND zajecia.data ='$date'AND pracownicy.id = zajecia.id_pracownika AND zajecia.id_sali = pomieszczenia.id AND zajecia.godzina_rozpoczecia <='$time1' AND zajecia.godzina_zakonczenia >='$time1') ORDER BY zajecia.godzina_rozpoczecia LIMIT 1";
 
 //$sql = "SELECT pomieszczenia.numerSali, pomieszczenia.budynek, zajecia.godziny, zajecia.nazwa_przedmiotu, pracownicy.nazwisko
 //FROM zajecia JOIN pomieszczenia ON zajecia.id_sali = pomieszczenia.id JOIN pracownicy ON zajecia.id_pracownika = pracownicy.id WHERE pracownicy.imie = '$employeeName' AND pracownicy.nazwisko = '$employeeSurname' AND zajecia.data ='$date' AND zajecia.godziny ='$time' AND pracownicy.id = zajecia.id_pracownika AND zajecia.id_sali = pomieszczenia.id LIMIT 2;";
@@ -118,9 +116,7 @@ function function2(){
 FROM zajecia
 JOIN pomieszczenia ON zajecia.id_sali = pomieszczenia.id
 JOIN pracownicy ON zajecia.id_pracownika = pracownicy.id
-WHERE (pomieszczenia.numerSali = '$roomNumber' AND pomieszczenia.budynek = '$buildingNumber' AND zajecia.data = '$date' AND zajecia.godzina_rozpoczecia = '$time1' AND zajecia.godzina_zakonczenia='$time2')
-OR
-(pomieszczenia.numerSali = '$roomNumber' AND pomieszczenia.budynek = '$buildingNumber' AND zajecia.data = '$date' AND zajecia.godzina_rozpoczecia = '$time3' AND zajecia.godzina_zakonczenia='$time4');";
+WHERE (pomieszczenia.numerSali = '$roomNumber' AND pomieszczenia.budynek = '$buildingNumber' AND zajecia.data = '$date' AND zajecia.godzina_rozpoczecia <= '$time1' OR zajecia.godzina_zakonczenia>='$time1') ORDER BY zajecia.godzina_rozpoczecia LIMIT 1";
 
     $result = $conn->query($sql);
 
@@ -159,7 +155,7 @@ OR
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/wyszukiwarka.css" />
-
+	<link rel="shortcut icon" href="../grafiki/logo.png" sizes="100x100">
 
 
     <meta name="description" content="Wyszukiwarka pracowników i pomieszczeń WI ZUT">
