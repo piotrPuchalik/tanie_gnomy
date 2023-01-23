@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="pl-Pl">
+<html lang="pl-PL">
     <head>
 		<meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,12 +26,12 @@
 			<table>
 			<?php
 			
-				$conn = new PDO("mysql:host=localhost;dbname=projekt","root","");
+				$conn = new PDO("mysql:host=localhost;dbname=donde","root","");
 				if(isset($_GET['sala']))
 				{
-					$data=date("N");
+					$data=date("Y-m-d");
 					$czas=date("H:i");
-					$select = $conn->prepare("SELECT id, numerSali, zastosowanie FROM pomieszczenia WHERE budynek='WI1' AND numerSali=:numer");
+					$select = $conn->prepare("SELECT id, numerSali,typ_pomieszczenia FROM pomieszczenia WHERE budynek='WI1' AND numerSali=:numer");
 					$select->bindParam(':numer',$_GET['sala']);
 					$select->execute();
 					$result = $select->fetch();
@@ -39,25 +39,27 @@
 					{
 						
 						echo "<tr> <td> numer sali: ".$result['numerSali']."</td> </tr>";
-						echo "<tr> <td> typ sali: ".$result['zastosowanie']."</td> </tr>";
+						echo "<tr> <td> typ sali: ".$result['typ_pomieszczenia']."</td> </tr>";
 						
-						if($result['zastosowanie']!='Gabinet')
+						if($result['typ_pomieszczenia']!='gabinet')
 						{
-							$plan = $conn->prepare("SELECT * FROM plan WHERE sala_ID=:sala_ID AND dzienTygodnia=:dzien AND ( godzinaZakonczenia>:czas OR godzinaRozpoczecia>:czas ) ORDER BY godzinaRozpoczecia");
-							$plan->bindParam(':sala_ID',$result['id']);
-							$plan->bindParam(':dzien',$data);
+							$plan = $conn->prepare("SELECT * FROM zajecia WHERE id_sali=:id AND data>=:data AND ( godzina_zakonczenia>:czas OR godzina_rozpoczecia>:czas ) ORDER BY data, godzina_rozpoczecia");
+							$plan->bindParam(':id',$result['id']);
+							$plan->bindParam(':data',$data);
 							$plan->bindParam(':czas',$czas);
 							$plan->execute();
 							$plan = $plan->fetch();
 							$pracownik = $conn->prepare("SELECT imie, nazwisko, tytul FROM pracownicy WHERE id=:id");
-							$pracownik->bindParam(':id',$plan['pracownik_ID']);
+							$pracownik->bindParam(':id',$plan['id_pracownika']);
 							$pracownik->execute();
 							$pracownik = $pracownik->fetch();
 							if(isset($plan['id']))
 							{
+								
 								echo "<tr> <td> najbliższe/aktualne zajęcia: ";
-								echo $plan['przedmiot']." ".$plan['forma']." ";
-								echo $plan['godzinaRozpoczecia']."-".$plan['godzinaZakonczenia']." ";
+								echo $plan['data']." ";
+								echo $plan['godzina_rozpoczecia']."-".$plan['godzina_zakonczenia']." ";
+								echo $plan['nazwa_przedmiotu']." ".$plan['typ_zajęć']." ";
 								echo $pracownik['tytul']." ".$pracownik['imie'] ." ".$pracownik['nazwisko'];
 								
 							}
@@ -68,13 +70,13 @@
 						}
 						else
 						{
-							$select = $conn->prepare("SELECT p.id, p.imie, p.nazwisko, p.tytul FROM pracownicy as p JOIN pomieszczenia as s ON p.id=s.pracownik_ID WHERE s.budynek='WI1' AND s.numerSali=:numer");
+							$select = $conn->prepare("SELECT p.id, p.imie, p.nazwisko, p.tytul FROM pracownicy as p JOIN pomieszczenia as s ON p.gabinet=s.id WHERE s.budynek='WI1' AND s.numerSali=:numer");
 							$select->bindParam(':numer',$_GET['sala']);
 							$select->execute();
 							$result = $select->fetch();
-							$plan = $conn->prepare("SELECT * FROM plan WHERE pracownik_ID=:pracownik_ID AND dzienTygodnia=:dzien AND ( godzinaZakonczenia>:czas OR godzinaRozpoczecia>:czas ) ORDER BY godzinaRozpoczecia");
-							$plan->bindParam(':pracownik_ID',$result['id']);
-							$plan->bindParam(':dzien',$data);
+							$plan = $conn->prepare("SELECT * FROM zajecia WHERE id_pracownika=:id_pracownika AND data>=:data AND ( godzina_zakonczenia>:czas OR godzina_rozpoczecia>:czas ) ORDER BY data, godzina_rozpoczecia");
+							$plan->bindParam(':id_pracownika',$result['id']);
+							$plan->bindParam(':data',$data);
 							$plan->bindParam(':czas',$czas);
 							$plan->execute();
 							$plan = $plan->fetch();
@@ -83,9 +85,11 @@
 							echo "<tr> <td> tytuły pracownika: ".$result['tytul']."</td> </tr>";
 							if(isset($plan['id']))
 							{
-								echo "<tr> <td> najbliższe/aktualne zajęcia: ";//.$res['godzinaRozpoczecia']."-".$res['godzinaZakonczenia']." </td> </tr>";
-								echo $plan['przedmiot']." ".$plan['forma']." ";
-								echo $plan['godzinaRozpoczecia']."-".$plan['godzinaZakonczenia'];
+								echo "<tr> <td> najbliższe/aktualne zajęcia: ";
+								echo $plan['data']." ";
+								echo $plan['godzina_rozpoczecia']."-".$plan['godzina_zakonczenia']." ";
+								echo $plan['nazwa_przedmiotu']." ".$plan['typ_zajęć']." ";
+								echo $result['tytul']." ".$result['imie'] ." ".$result['nazwisko'];
 								
 							}
 							else echo "<tr> <td> najbliższe/aktualne zajęcia: brak zajęć </td> </tr>";
