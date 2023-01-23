@@ -6,8 +6,8 @@
 		<link rel="stylesheet" href="../style/plan.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <meta name="description" content="Plan WI2">
-        <title>Plan WI2</title>
+        <meta name="description" content="Plan budynku WI2">
+        <title>¿Donde? - Budynek WI2</title>
 		<link rel="shortcut icon" href="../grafiki/logo.png" sizes="100x100">
     </head>
 	<body>
@@ -15,12 +15,12 @@
 
 		<div id="header"> <h1> Budynek WI-2 </h1> </div>
 		<div id="menu"> 
-				<ul> 
-					<li> <button class="btn" onclick="menu(3)"> Piętro 3 </button> </li>
-					<li> <button class="btn" onclick="menu(2)"> Piętro 2 </button> </li> 
-					<li> <button class="btn" onclick="menu(1)"> Piętro 1 </button> </li>
-					<li> <button class="btn" onclick="menu(0)"> Piętro 0 </button> </li>
-				</ul>
+			<ul> 
+				<li> <button class="btn" onclick="menu(3)"> Piętro 3 </button> </li>
+				<li> <button class="btn" onclick="menu(2)"> Piętro 2 </button> </li> 
+				<li> <button class="btn" onclick="menu(1)"> Piętro 1 </button> </li>
+				<li> <button class="btn" onclick="menu(0)"> Piętro 0 </button> </li>
+			</ul>
 			</div>
 		<div id="wynik">
 			<table>

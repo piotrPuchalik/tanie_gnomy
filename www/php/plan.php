@@ -6,8 +6,8 @@
 		<link rel="stylesheet" href="../style/plan.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
-        <meta name="description" content="Plan WI1">
-        <title>Plan WI1</title>
+        <meta name="description" content="Plan">
+        <title>¿Donde? - Plan</title>
 		<link rel="shortcut icon" href="../grafiki/logo.png" sizes="100x100">
     </head>
     <body>
@@ -24,23 +24,24 @@
 				
 			else if(isset($_GET['imie']) && isset($_GET['nazwisko']))
 			{
-					$select = $conn->prepare("SELECT tytul FROM pracownicy WHERE imie=:imie AND nazwisko=:nazwisko");
-					$select->bindParam(':imie',$_GET['imie']);
-					$select->bindParam(':nazwisko',$_GET['nazwisko']);
-					$select->execute();
-					$res = $select->fetch();
-				if($res != null)echo "Zajęcia prowadzącego: ".$res['tytul']." ".$_GET['imie']." ".$_GET['nazwisko'];
+					$pracownik = $conn->prepare("SELECT tytul FROM pracownicy WHERE imie=:imie AND nazwisko=:nazwisko");
+					$pracownik->bindParam(':imie',$_GET['imie']);
+					$pracownik->bindParam(':nazwisko',$_GET['nazwisko']);
+					$pracownik->execute();
+					$pracownik = $pracownik->fetch();
+				if($pracownik != null)echo "Zajęcia prowadzącego: ".$pracownik['tytul']." ".$_GET['imie']." ".$_GET['nazwisko'];
 				else echo "Zajęcia prowadzącego: ".$_GET['imie']." ".$_GET['nazwisko'];
 			}
 			?> 
 		</h1> </div>
 		<div id="plan"> 
-			<table> <tr> <td> Godziny </td> <td> Budynek </td> <td> Przedmiot </td> <td> Typ zajęć </td> <td> Prowadzący </td> </tr>
+			<table>
 			<?php
-				
+
 				if(isset($_GET['budynek']) && isset($_GET['sala']))
 				{
-					$select = $conn->prepare("SELECT zj.godzina_rozpoczecia, zj.godzina_zakonczenia, zj.id_sali, zj.nazwa_przedmiotu, zj.typ_zajęć, zj.id_pracownika FROM zajecia as zj JOIN pomieszczenia as p ON p.id=id_sali WHERE p.budynek=:budynek AND p.numerSali=:numer");
+					echo "<tr> <td> Data </td> <td> Od </td> <td> Do </td> <td> Przedmiot </td> <td> Forma </td> <td> Prowadzący </td> </tr>";
+					$select = $conn->prepare("SELECT * FROM zajecia as z JOIN pomieszczenia as p ON p.id=z.id_sali WHERE p.budynek=:budynek AND p.numerSali=:numer");
 					$select->bindParam(':numer',$_GET['sala']);
 					$select->bindParam(':budynek',$_GET['budynek']);
 					$select->execute();
@@ -48,10 +49,12 @@
 					$sel = $conn->prepare("SELECT tytul, imie, nazwisko FROM pracownicy WHERE id=:id");
 					foreach($result as $row)
 					{
-						echo "<td> ".$row['godzina_rozpoczecia']."-".$row['godzina_zakonczenia']." </td>";
-						echo "<td> ".$_GET['budynek']."-".$_GET['sala']." </td>";
+						echo "<td> ".$row['data']." </td>";
+						echo "<td> ".$row['godzina_rozpoczecia']." </td>";
+						echo "<td> ".$row['godzina_zakonczenia']." </td>";
+						$sel->bindParam(':id',$row['pracownik_ID']);
 						echo "<td> ".$row['nazwa_przedmiotu']." </td>";
-						echo "<td>".$row['typ_zajęć']."</td>";
+						echo "<td> ".$row['typ_zajęć']."</td>";
 						$sel->bindParam(':id',$row['id_pracownika']);
 						$sel->execute();
 						$res = $sel->fetch();
@@ -60,31 +63,32 @@
 				}
 				else if(isset($_GET['imie']) && isset($_GET['nazwisko']))
 				{
-                    echo $_GET['imie'];
-                    echo $_GET['nazwisko'];
-					$select = $conn->prepare("SELECT  zj.godzina_rozpoczecia, zj.godzina_zakonczenia, zj.id_sali, zj.nazwa_przedmiotu, zj.typ_zajęć, zj.id_pracownika, p.tytul FROM zajecia as zj JOIN pracownicy as p ON p.id=zj.id_pracownika WHERE p.imie=:imie AND p.nazwisko=:nazwisko");
+					echo "<tr> <td> Data </td> <td> Od </td> <td> Do </td> <td> Sala </td> <td> Przedmiot </td> <td> Forma </td> </tr>";
+					$select = $conn->prepare("SELECT * FROM zajecia as z JOIN pracownicy as p ON p.id=z.id_pracownika WHERE p.imie=:imie AND p.nazwisko=:nazwisko");
 					$select->bindParam(':imie',$_GET['imie']);
 					$select->bindParam(':nazwisko',$_GET['nazwisko']);
 					$select->execute();
 					$result = $select->fetchAll();
+					$sel = $conn->prepare("SELECT budynek, numerSali FROM pomieszczenia WHERE id=:id");
 					foreach($result as $row)
 					{
-
-						echo "<td> ".$row['godzina_rozpoczecia']."-".$row['godzina_zakonczenia']." </td>";
-						$sel = $conn->prepare("SELECT budynek, numerSali FROM pomieszczenia WHERE id=:id");
+						echo "<td> ".$row['data']." </td>";
+						echo "<td> ".$row['godzina_rozpoczecia']." </td>";
+						echo "<td> ".$row['godzina_zakonczenia']." </td>";
 						$sel->bindParam(':id',$row['id_sali']);
 						$sel->execute();
 						$res = $sel->fetch();
 						echo "<td> ".$res['budynek']."-".$res['numerSali']." </td>";
 						echo "<td> ".$row['nazwa_przedmiotu']." </td>";
-						echo "<td>".$row['typ_zajęć']."</td>";
-						echo "<td> ".$row['tytul']." ".$_GET['imie']." ".$_GET['nazwisko']." </td> </tr>";
+						echo "<td> ".$row['typ_zajęć']."</td> </tr>";
+						
 					}
-			
+
 				}
 			?>
 			</table>
 		</div>
 	</body>
+</html>
 </html>
 
