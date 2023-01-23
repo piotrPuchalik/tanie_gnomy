@@ -1789,7 +1789,7 @@ function menu(link)
 		<rect id="XMLID_53_" x="657.3" y="364.5" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="19" height="35.5"/>
 		<rect id="XMLID_52_" x="653.5" y="364.5" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="3.8" height="35.5"/>
 
-        <a xlink:title:"1" xlink:href=""><g id="XMLID_1_">
+        <a xlink:title:"1" xlink:href="plan_wi1.php?sala=215"><g id="XMLID_1_">
 			<rect id="XMLID_2_" x="31.5" y="220.3" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="204.3" height="116.5"/>
 		<text transform="matrix(1 0 0 1 107 278.5)" font-family="'MyriadPro-Regular'" font-size="8px">S</text>
 		<text transform="matrix(1 0 0 1 110.9438 278.5)" font-family="'MyriadPro-Regular'" font-size="8px">A</text>
@@ -1881,7 +1881,7 @@ function menu(link)
 
 				<text transform="matrix(-1.395000e-002 0.9999 -0.9999 -1.395000e-002 394.1724 273.8092)" font-family="'MyriadPro-Regular'" font-size="8px">9</text>
 		</g></a>
-		<a xlink:title:"1" xlink:href=""><g id="XMLID_101_">
+		<a xlink:title:"1" xlink:href="plan_wi1.php?sala=220"><g id="XMLID_101_">
 			<rect id="XMLID_7_" x="417" y="220.3" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="34" height="80.3"/>
 
 				<text transform="matrix(-1.395000e-002 0.9999 -0.9999 -1.395000e-002 432.8736 241.4697)" font-family="'MyriadPro-Regular'" font-size="8px">P</text>

@@ -11774,7 +11774,7 @@ xKyRypVJrMyFqbg+oEgKAorGHTLuB4pc14iobYIfNrbFu3K3XWv+3eml0+CHhcPmY+e013wGSxr5
 			<rect id="XMLID_13_" x="707.5" y="161.5" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="45" height="62"/>
 			<text id="XMLID_61_" transform="matrix(1 0 0 1 724.5002 194.9997)" font-family="'MyriadPro-Regular'" font-size="8px">WC</text>
 		</g></a>
-		<a xlink:title:"SALA WYKLADOWA 21" xlink:href=""><g id="XMLID_101_">
+		<a xlink:title:"SALA WYKLADOWA 21" xlink:href="plan_wi2.php?sala=21"><g id="XMLID_101_">
 			<rect id="XMLID_16_" x="800.5" y="162.5" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="130" height="240"/>
 			<text transform="matrix(1 0 0 1 845.5001 269.6664)" font-family="'MyriadPro-Regular'" font-size="8px"> </text>
 			<text transform="matrix(1 0 0 1 847.1959 269.6664)" font-family="'MyriadPro-Regular'" font-size="8px"> </text>
