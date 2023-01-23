@@ -7,7 +7,7 @@ function menu(link)
 		case -1:{div.innerHTML=`<div id="plandiv" class="mapdiv">
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.2" baseProfile="tiny" id="Warstwa_1"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 960 560"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 120 960 300"
 	 xml:space="preserve">
     <rect id="XMLID_14_" x="446.7" y="249.3" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="27.7" height="27"/>
     <rect id="XMLID_26_" x="832.7" y="245" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="35.3" height="32"/>
@@ -623,7 +623,7 @@ function menu(link)
 		case 0:{div.innerHTML=`<div id="plandiv" class="mapdiv">
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.2" baseProfile="tiny" id="Warstwa_1"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 960 560"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 130 960 300"
 	 xml:space="preserve">
 <rect id="XMLID_4_" x="62.3" y="213.3" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="36.5" height="34.8"/>
 <rect id="XMLID_21_" x="821.5" y="206.3" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="15.3" height="43.3"/>
@@ -1048,7 +1048,7 @@ function menu(link)
 		case 1:{div.innerHTML=`<div id="plandiv" class="mapdiv">
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.2" baseProfile="tiny" id="Warstwa_1"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 960 560"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 160 960 300"
 	 xml:space="preserve">
 <rect id="XMLID_10_" x="267.3" y="257" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="43" height="32.3"/>
 <rect id="XMLID_49_" x="655.7" y="392.7" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="42.7" height="22.7"/>
@@ -1746,7 +1746,7 @@ function menu(link)
 		default:{div.innerHTML=`<div id="plandiv" class="mapdiv">
 <!-- Generator: Adobe Illustrator 19.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.2" baseProfile="tiny" id="Warstwa_1"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 960 560"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 120 960 300"
 	 xml:space="preserve">
     <rect id="XMLID_14_" x="446.7" y="249.3" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="27.7" height="27"/>
     <rect id="XMLID_26_" x="832.7" y="245" fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10" width="35.3" height="32"/>
