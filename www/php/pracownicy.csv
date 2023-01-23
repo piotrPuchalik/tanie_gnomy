@@ -1,2 +1,4 @@
-21,"pbuczynski","Piotr","Buczyński","admin","pbuczynski@zut.edu.pl","inżynier"
-22,"akarczmarczyk","Artur","Karczmarczyk","admin","artur.karczmarczyk@zut.edu.pl","doktor"
+"""Piotr"",""Buczynski"",""pbuczynski@zut.edu.pl"",""doktor inżynier"",1"
+"""Artur"",""Karczmarczyk"",""artur.karczmarczyk@zut.edu.pl"",""doktor"",2"
+"""Zdzisław"",""Zawadka"",""zzawadka"",""student"",2"
+"""Aleksander"",""Bartman"",""mikolaj.sitek123@gmail.com"",""student"",1"

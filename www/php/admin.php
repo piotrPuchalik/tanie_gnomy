@@ -11,21 +11,20 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id,username,imie,nazwisko,haslo,email,tytul FROM pracownicy";
+$sql = "SELECT id,imie,nazwisko,email,tytul,gabinet FROM pracownicy";
 //fire query
 $result = mysqli_query($conn, $sql);
 if(mysqli_num_rows($result) > 0)
 {
-echo '<table> <tr> <th> Id </th> <th> username </th> <th> imie </th> <th> nazwisko </th><th> haslo </th><th> email </th><th> tytul </th> </tr>';
+echo '<table> <tr> <th> Id </th> <th> imie </th> <th> nazwisko </th><th> email </th><th> tytul </th><th>gabinet</th> </tr>';
     while($row = mysqli_fetch_assoc($result)){
     // to output mysql data in HTML table format
     echo '<tr > <td>' . $row["id"] . '</td>
-        <td>' . $row["username"] . '</td>
         <td> ' . $row["imie"] . '</td>
         <td>' . $row["nazwisko"] . '</td>
-        <td>' . $row["haslo"] . '</td>
         <td>' . $row["email"] . '</td>
         <td>' . $row["tytul"] . '</td>
+        <td>' . $row["gabinet"] . '</td>
         </tr>';
 
     }
@@ -48,12 +47,11 @@ if(isset($_POST['buttonAdd']))
 {
     echo'<form method="post">
     ID: <input type="text" name="id"><br>
-Username: <input type="text" name="username"><br>
 Imie: <input type="text" name="imie"><br>
 Nazwisko: <input type="text" name="nazwisko"><br>
-Haslo: <input type="password" name="haslo"><br>
 Email: <input type="text" name="email"><br>
 Tytul: <input type="text" name="tytul"><br>
+Gabinet: <input type="text" name="gabinet"><br>
     <input type="submit" name="buttonAdd2" value="Add">
 </form>';
 
@@ -62,20 +60,15 @@ Tytul: <input type="text" name="tytul"><br>
 
 if (isset($_POST['buttonAdd2'])) {
     $id = $_POST['id'];
-    $username = $_POST['username'];
     $imie = $_POST['imie'];
     $nazwisko = $_POST['nazwisko'];
-    $haslo = $_POST['haslo'];
     $email = $_POST['email'];
     $tytul = $_POST['tytul'];
+    $gabinet = $_POST['gabinet'];
 
     $error = false;
     if (empty($id)) {
         echo "ID is required <br>";
-        $error = true;
-    }
-    if (empty($username)) {
-        echo "Username is required <br>";
         $error = true;
     }
     if (empty($imie)) {
@@ -86,16 +79,15 @@ if (isset($_POST['buttonAdd2'])) {
         echo "Nazwisko is required <br>";
         $error = true;
     }
-    if (empty($haslo)) {
-        echo "Haslo is required <br>";
-        $error = true;
-    }
     if (empty($email)) {
         echo "Email is required <br>";
         $error = true;
     }
     if (empty($tytul)) {
         echo "Tytul is required <br>";
+        $error = true;
+    }if (empty($gabinet)) {
+        echo "Gabinet is required <br>";
         $error = true;
     }
 
@@ -108,10 +100,10 @@ if (isset($_POST['buttonAdd2'])) {
 
             echo'ID already exists in the database, please use a different ID';
         } else {
-            $sql = "INSERT INTO pracownicy (id, username, imie, nazwisko, haslo, email, tytul)
-            VALUES ('$id', '$username', '$imie', '$nazwisko', '$haslo', '$email', '$tytul')
+            $sql = "INSERT INTO pracownicy (id,imie, nazwisko, email, tytul,gabinet)
+            VALUES ('$id', '$imie', '$nazwisko', '$email', '$tytul','$gabinet')
             ON DUPLICATE KEY UPDATE 
-            username = '$username', imie = '$imie', nazwisko = '$nazwisko', haslo = '$haslo', email = '$email', tytul = '$tytul' ";
+            imie = '$imie', nazwisko = '$nazwisko',email = '$email', tytul = '$tytul',gabinet='$gabinet' ";
             $result = mysqli_query($conn, $sql);
             if ($result) {
                 echo "New record created successfully";
@@ -166,34 +158,30 @@ if(isset($_POST['buttonEdit'])) {
 
     echo '<form method="post">
     ID: <input type="text" name="id"><br>
-    Username: <input type="text" name="username"><br>
     Imie: <input type="text" name="imie"><br>
     Nazwisko: <input type="text" name="nazwisko"><br>
-    Haslo: <input type="password" name="haslo"><br>
     Email: <input type="text" name="email"><br>
     Tytul: <input type="text" name="tytul"><br>
+    Gabinet: <input type="text" name="gabinet"><br>
     <input type="submit" name="buttonEdit2" value="Edit">
 </form>';
 
 }
 if (isset($_POST['buttonEdit2'])) {
         $id = $_POST['id'];
-        $username = $_POST['username'];
+
         $imie = $_POST['imie'];
         $nazwisko = $_POST['nazwisko'];
-        $haslo = $_POST['haslo'];
         $email = $_POST['email'];
         $tytul = $_POST['tytul'];
+        $gabinet = $_POST['gabinet'];
 
         $error = false;
         if (empty($id)) {
             echo "ID is required <br>";
             $error = true;
         }
-        if (empty($username)) {
-            echo "Username is required <br>";
-            $error = true;
-        }
+
         if (empty($imie)) {
             echo "Imie is required <br>";
             $error = true;
@@ -202,10 +190,7 @@ if (isset($_POST['buttonEdit2'])) {
             echo "Nazwisko is required <br>";
             $error = true;
         }
-        if (empty($haslo)) {
-            echo "Haslo is required <br>";
-            $error = true;
-        }
+
         if (empty($email)) {
             echo "Email is required <br>";
             $error = true;
@@ -214,12 +199,16 @@ if (isset($_POST['buttonEdit2'])) {
             echo "Tytul is required <br>";
             $error = true;
         }
+    if (empty($gabinet)) {
+        echo "Gabinet is required <br>";
+        $error = true;
+    }
         if (!$error) {
             $conn = mysqli_connect("localhost", "root", "", "donde");
             $sql = "SELECT * FROM pracownicy WHERE id='$id'";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
-                $sql = "UPDATE pracownicy SET username='$username', imie='$imie', nazwisko='$nazwisko', haslo='$haslo', email='$email', tytul='$tytul' WHERE id='$id'";
+                $sql = "UPDATE pracownicy SET  imie='$imie', nazwisko='$nazwisko', email='$email', tytul='$tytul', gabinet='$gabinet' WHERE id='$id'";
                 $result = mysqli_query($conn, $sql);
                 if ($result) {
                     echo "Record updated successfully";
@@ -254,15 +243,17 @@ echo'<form action="" method="post" name="frmCSVImport" id="frmCSVImport"
 if(isset($_FILES["file"])) {
     $file_path = $_FILES["file"]["tmp_name"];
     if (file_exists($file_path)) {
-        //if($_FILES["file"]["name"] == "pracownicy.csv"
-            $status=unlink('pracownicy.csv');
-            $new_file_path = "C:/xampp/htdocs/tanie_gnomy/www/php/pracownicy.csv"; //jeszczer raz hehe
+        //if($_FILES["file"]["name"] == "pracownicy.csv") {
+            $status = unlink('pracownicy.csv');
+
+            $new_file_path = "C:/xampp/htdocs/tanie_gnomy/www/php/pracownicy.csv";
             move_uploaded_file($file_path, $new_file_path);
             $file = fopen("pracownicy.csv", "r");
-            $string = "pracownicy,csv";
+           // $string = "pracownicy,csv";
 
-
-    } else {
+        //}
+    }
+    else {
         echo "The file doesn't exist in the server";
     }
 
@@ -278,12 +269,37 @@ if(isset($_FILES["file"])) {
     }*/
     if (($handle = fopen("pracownicy.csv", "r")) !== FALSE) {
         $n = 1;
-        while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        /*while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
 
             // SQL query to store data in
             // database our table name is
             // table2
-            $sql = 'INSERT INTO pracownicy (id, username, imie, nazwisko, haslo, email, tytul) VALUES ("' . $row[0] . '","' . $row[1] . '","' . $row[2] . '","' . $row[3] . '","' . $row[4] . '","' . $row[5] . '","' . $row[6] . '") ON DUPLICATE KEY UPDATE id = "'.$row[0].'", username = "'.$row[1].'", imie = "'.$row[2].'", nazwisko = "'.$row[3].'", haslo = "'.$row[4].'", email = "'.$row[5].'",tytul = "'.$row[6].'"';
+            echo $row[0];
+            echo $row[1];
+            echo $row[2];
+            echo $row[3];
+            echo $row[0];
+            //$sql = 'INSERT INTO pracownicy (id, imie, nazwisko, email, tytul,gabinet) VALUES ("' . $row[0] . '","' . $row[1] . '","' . $row[2] . '","' . $row[3] . '","' . $row[4] .',"' . $row[5] .'") ON DUPLICATE KEY UPDATE id = "'.$row[0].'",  imie = "'.$row[1].'", nazwisko = "'.$row[2].'",  email = "'.$row[3].'",tytul = "'.$row[4].'';
+            $sql = 'INSERT INTO pracownicy (id, imie, nazwisko, email, tytul,gabinet) VALUES ("' . $row[0] . '","' . $row[1] . '","' . $row[2] . '","' . $row[3] . '","' . $row[4] .'","' . $row[5] .'") ON DUPLICATE KEY UPDATE id = "'.$row[0].'", imie = "'.$row[1].'", nazwisko = "'.$row[2].'", email = "'.$row[3].'",tytul = "'.$row[4].'",gabinet = "'.$row[5].'"';
+
+            mysqli_query($conn, $sql);
+        }*/
+
+        while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            //$id = $row[0];
+            $imie = $row[0];
+            $nazwisko = $row[1];
+            $email = $row[2];
+            $tytul = $row[3];
+            $gabinet = $row[4];
+/*            echo $id;*/
+            echo $imie;
+            echo $nazwisko;
+            echo $email;
+            echo $tytul;
+            echo $gabinet;
+            //$sql = 'INSERT INTO pracownicy (id, imie, nazwisko, email, tytul,gabinet) VALUES ("' . $id . '","' . $imie . '","' . $nazwisko . '","' . $email . '","' . $tytul .'","' . $gabinet .'") ON DUPLICATE KEY UPDATE id = "'.$id.'", imie = "'.$imie.'", nazwisko = "'.$nazwisko.'", email = "'.$email.'",tytul = "'.$tytul.'",gabinet = "'.$gabinet.'"';
+            $sql = 'INSERT INTO pracownicy (imie, nazwisko, email, tytul,gabinet) VALUES ("' . $imie . '","' . $nazwisko . '","' . $email . '","' . $tytul .'","' . $gabinet .'") ON DUPLICATE KEY UPDATE id =  imie = "'.$imie.'", nazwisko = "'.$nazwisko.'", email = "'.$email.'",tytul = "'.$tytul.'",gabinet = "'.$gabinet.'"';
             mysqli_query($conn, $sql);
         }
         fclose($file);
@@ -305,6 +321,7 @@ if(isset($_FILES["file"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../grafiki/logo.png" sizes="100x100">
+      <link rel="stylesheet" href="../style/admin.css" />
     <meta name="description" content="Admin page">
     <title>¿Donde? -Admin page</title>
   </head>

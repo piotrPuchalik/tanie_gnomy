@@ -30,7 +30,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
         $row = $result->fetch_assoc();
     }*/
 // Tworzymy zapytanie do bazy danych
-    $sql = "SELECT * FROM admini WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM admini WHERE username='$username' AND haslo='$password'";
     $result = mysqli_query($conn, $sql);
 // Jeśli znaleziono użytkownika, ustawiamy sesję i wysyłamy odpowiedź "success"
     if (mysqli_num_rows($result) > 0) {
