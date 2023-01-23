@@ -1,0 +1,232 @@
+<!DOCTYPE HTML>
+<html lang="pl-PL">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="../style/wyszukiwarka.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Plan WI1">
+    <title>Wyszukiwarka</title>
+    <link rel="shortcut icon" href="../grafiki/logo.png" sizes="100x100">
+</head>
+<body>
+<div class="wybor">
+    <input type="radio" name="przycisk" id="pracownik" onclick="showPracownik()" >Pracownik</input>
+    <br>
+    <input type="radio" name="przycisk" id="sala"  onclick="showSala()">Sala</input>
+</div>
+<div id="employeeList" class="employeeList" style="display: none;">
+    <form method="get">
+        <div class="">
+            <h1 >Wyszukaj pracownika</h1></div>
+        <input type="hidden" name="function">
+        <label for="imie">Imię</label>
+        <input type="text" name="imie">
+        <br>
+
+        <label for="employeeSurname">Nazwisko</label>
+        <input type="text" name="nazwisko">
+        <br>
+        <label for="date">Data</label>
+        <input type="date" name="date" id="date">
+        <br>
+        <label for="time">Godzina</label>
+        <input type="text" name="godzinaRozpoczecia">
+        <br>
+        <input type="text" name="godzinaZakonczenia">
+        <br>
+        <input type="submit" onclick="funkcja()">
+
+    </form>
+</div>
+
+<script>
+    var date = new Date();
+
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;
+    document.getElementById("date").value = today;
+</script>
+
+
+<div id="roomList" class="roomList"style="display: none;">
+    <form method="get">
+        <div class="">
+            <h1 >Wyszukaj Salę</h1></div>
+        <input type="hidden" name="function" >
+        <label for="roomNumber">Numer Sali</label>
+        <input type="text" name="sala">
+        <br>
+        <label for="buildingNumber">Numer budynku</label>
+        <input type="text" name="budynek">
+        <br>
+        <label for="date2">Data</label>
+        <input type="date" name="date2" id="date2">
+        <br>
+        <label for="time">Godzina</label>
+        <input type="text" name="godzinaRozpoczecia">
+        <br>
+        <input type="text" name="godzinaZakonczenia">
+        <br>
+
+        <input type="submit" onclick="funkcja()">
+
+    </form>
+</div>
+
+<script>
+    var date = new Date();
+
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;
+    document.getElementById("date2").value = today;
+</script>
+
+<style>
+
+    th, td {
+        border: 1px solid;
+
+    }
+</style>
+
+
+
+<div id="content">
+
+    <div id="tabelaHeader"> <h1>
+            <?php
+            $conn = new PDO("mysql:host=localhost;dbname=donde","root","");
+            if(isset($_GET['budynek']) && isset($_GET['sala']))
+            {
+                echo "Zajęcia w sali ".$_GET['budynek']."-".$_GET['sala'];
+            }
+
+            else if(isset($_GET['imie']) && isset($_GET['nazwisko']))
+            {
+                $select = $conn->prepare("SELECT tytul FROM pracownicy WHERE imie=:imie AND nazwisko=:nazwisko");
+                $select->bindParam(':imie',$_GET['imie']);
+                $select->bindParam(':nazwisko',$_GET['nazwisko']);
+                $select->execute();
+                $res = $select->fetch();
+                if($res != null)echo "Zajęcia prowadzącego: ".$res['tytul']." ".$_GET['imie']." ".$_GET['nazwisko'];
+                else echo "Zajęcia prowadzącego: ".$_GET['imie']." ".$_GET['nazwisko'];
+
+            }
+
+            ?>
+        </h1>
+    </div>
+    <div id="plan">
+        <table id ="tabelka"> <tr> <td> Godziny </td> <td> Budynek </td> <td> Przedmiot </td> <td> Typ zajęć </td> <td> Prowadzący </td> </tr>
+
+            <?php
+
+            if(isset($_GET['budynek']) && isset($_GET['sala']))
+            {
+                $select = $conn->prepare("SELECT zj.godzina_rozpoczecia, zj.godzina_zakonczenia, zj.id_sali, zj.nazwa_przedmiotu, zj.typ_zajęć, zj.id_pracownika FROM zajecia as zj JOIN pomieszczenia as p ON p.id=id_sali WHERE p.budynek=:budynek AND p.numerSali=:numer");
+                $select->bindParam(':numer',$_GET['sala']);
+                $select->bindParam(':budynek',$_GET['budynek']);
+                $select->execute();
+                $result = $select->fetchAll();
+                $sel = $conn->prepare("SELECT tytul, imie, nazwisko FROM pracownicy WHERE id=:id");
+                foreach($result as $row)
+                {
+                    echo "<td> ".$row['godzina_rozpoczecia']."-".$row['godzina_zakonczenia']." </td>";
+                    echo "<td> ".$_GET['budynek']."-".$_GET['sala']." </td>";
+                    echo "<td> ".$row['nazwa_przedmiotu']." </td>";
+                    echo "<td>".$row['typ_zajęć']."</td>";
+                    $sel->bindParam(':id',$row['id_pracownika']);
+                    $sel->execute();
+                    $res = $sel->fetch();
+                    echo "<td> ".$res['tytul']." ".$res['imie']." ".$res['nazwisko']." </td> </tr>";
+                }
+            }
+            else if(isset($_GET['imie']) && isset($_GET['nazwisko']))
+            {
+                $select = $conn->prepare("SELECT  zj.godzina_rozpoczecia, zj.godzina_zakonczenia, zj.id_sali, zj.nazwa_przedmiotu, zj.typ_zajęć, zj.id_pracownika, p.tytul FROM zajecia as zj JOIN pracownicy as p ON p.id=zj.id_pracownika WHERE p.imie=:imie AND p.nazwisko=:nazwisko");
+                $select->bindParam(':imie',$_GET['imie']);
+                $select->bindParam(':nazwisko',$_GET['nazwisko']);
+                $select->execute();
+                $result = $select->fetchAll();
+                foreach($result as $row)
+                {
+
+                    echo "<td> ".$row['godzina_rozpoczecia']."-".$row['godzina_zakonczenia']." </td>";
+                    $sel = $conn->prepare("SELECT budynek, numerSali FROM pomieszczenia WHERE id=:id");
+                    $sel->bindParam(':id',$row['id_sali']);
+                    $sel->execute();
+                    $res = $sel->fetch();
+                    echo "<td> ".$res['budynek']."-".$res['numerSali']." </td>";
+                    echo "<td> ".$row['nazwa_przedmiotu']." </td>";
+                    echo "<td>".$row['typ_zajęć']."</td>";
+                    echo "<td> ".$row['tytul']." ".$_GET['imie']." ".$_GET['nazwisko']." </td> </tr>";
+                }
+
+            }
+            ?>
+
+        </table>
+    </div>
+</div>
+    <script>
+
+            const targetDiv = document.getElementById("employeeList");
+            const btn = document.getElementById("pracownik");
+            const targetDiv2 = document.getElementById("roomList");
+            const btn2 = document.getElementById("sala");
+            let tabelaDane = document.getElementById("tabelaDane");
+
+            const tabela_header = document.getElementById("tabelaHeader");
+            const plan = document.getElementById("plan");
+
+            tabela_header.style.display="none";
+            plan.style.display="none";
+            function showPracownik()
+            {
+                targetDiv.style.display = "block";
+                targetDiv2.style.display = "none";
+                tabela_header.style.display = "none";
+                plan.style.display = "none";
+
+
+                tabelaDane.remove();
+            };
+
+
+            function showSala()
+            {
+                targetDiv.style.display = "none";
+                targetDiv2.style.display = "block";
+                tabela_header.style.display = "none";
+                plan.style.display = "none";
+                tabelaDane.remove();
+
+            };
+
+
+        function funkcja() {
+
+
+            tabela_header.style.display = "block";
+            plan.style.display = "block";
+
+
+        }
+    </script>
+</body>
+</html>
+
