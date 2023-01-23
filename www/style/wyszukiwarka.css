@@ -53,21 +53,6 @@ tr:nth-child(even) {
         font-size: 12px;
     }
 }
-
-
-    /* Radio buttons */
-    .wybor input[type="radio"] {
-    margin: 0 10px;
-    -webkit-appearance: none;
-    appearance: none;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    border: 2px solid rgb(0, 0, 0);
-    position: relative;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    }
     
     /* Selected radio button */
     .wybor input[type="radio"]:checked::before {
@@ -87,3 +72,99 @@ tr:nth-child(even) {
     font-size: 1.2em;
     margin: 0 10px;
     }
+
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.lista {
+    display: inline-block;
+    //text-align: left;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1.2em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+@media only screen and (max-width: 600px) {
+    form {
+        width: 90%;
+    }
+}
+
+#roomList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+#roomList form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#roomList form label {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+#employeeList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+#employeeList form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#employeeList form label {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}

@@ -175,7 +175,7 @@ OR
     <br>
     <input type="radio" name="przycisk" id="sala"  onclick="showSala()">Sala</input>
 </div>
-<div id="employeeList" class="employeeList" style="display: none;">
+<div id="employeeList" class="Lista" style="display: none;">
     <form method="post">
         <div class="">
             <h1 >Wyszukaj pracownika</h1></div>
@@ -214,7 +214,7 @@ OR
 </script>
 
 
-<div id="roomList" class="roomList"style="display: none;">
+<div id="roomList" class="Lista" style="display: none;">
     <form method="POST">
         <div class="">
             <h1 >Wyszukaj Salę</h1></div>

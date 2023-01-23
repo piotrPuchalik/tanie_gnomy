@@ -52,7 +52,7 @@ Nazwisko: <input type="text" name="nazwisko"><br>
 Email: <input type="text" name="email"><br>
 Tytul: <input type="text" name="tytul"><br>
 Gabinet: <input type="text" name="gabinet"><br>
-    <input type="submit" name="buttonAdd2" value="Add">
+    <input type="submit" name="buttonAdd2" value="Dodaj">
 </form>';
 
 
@@ -120,7 +120,7 @@ if(isset($_POST['buttonDelete']))
     {
         echo '<form method="post">
        Id: <input type="text" name="inputID">
-       <input type="submit" name="buttonDelete2" value="Submit">
+       <input type="submit" name="buttonDelete2" value="Usuń">
     </form>';
     }
 if (isset($_POST['inputID'])) {
@@ -163,7 +163,7 @@ if(isset($_POST['buttonEdit'])) {
     Email: <input type="text" name="email"><br>
     Tytul: <input type="text" name="tytul"><br>
     Gabinet: <input type="text" name="gabinet"><br>
-    <input type="submit" name="buttonEdit2" value="Edit">
+    <input type="submit" name="buttonEdit2" value="Edytuj">
 </form>';
 
 }
@@ -268,6 +268,7 @@ if(isset($_FILES["file"])) {
         }
     }*/
     if (($handle = fopen("pracownicy.csv", "r")) !== FALSE) {
+        echo 'XD';
         $n = 1;
         /*while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
 
@@ -287,19 +288,32 @@ if(isset($_FILES["file"])) {
 
         while (($row = fgetcsv($handle, 1000, ",")) !== FALSE) {
             //$id = $row[0];
-            $imie = $row[0];
-            $nazwisko = $row[1];
-            $email = $row[2];
-            $tytul = $row[3];
-            $gabinet = $row[4];
+            $string = $row[0];
+            echo $string;
+            $data = explode(",", $string);
+
+            $imie = $data[0];
+            $nazwisko = $data[1];
+            $email = $data[2];
+            $tytul = $data[3];
+            $gabinet = $data[4];
 /*            echo $id;*/
             echo $imie;
             echo $nazwisko;
             echo $email;
             echo $tytul;
             echo $gabinet;
+
+            echo '<br>';
+
+            echo $data[0];
+            echo $data[1];
+            echo $data[2];
+            echo $data[3];
+            echo $data[4];
             //$sql = 'INSERT INTO pracownicy (id, imie, nazwisko, email, tytul,gabinet) VALUES ("' . $id . '","' . $imie . '","' . $nazwisko . '","' . $email . '","' . $tytul .'","' . $gabinet .'") ON DUPLICATE KEY UPDATE id = "'.$id.'", imie = "'.$imie.'", nazwisko = "'.$nazwisko.'", email = "'.$email.'",tytul = "'.$tytul.'",gabinet = "'.$gabinet.'"';
-            $sql = 'INSERT INTO pracownicy (imie, nazwisko, email, tytul,gabinet) VALUES ("' . $imie . '","' . $nazwisko . '","' . $email . '","' . $tytul .'","' . $gabinet .'") ON DUPLICATE KEY UPDATE id =  imie = "'.$imie.'", nazwisko = "'.$nazwisko.'", email = "'.$email.'",tytul = "'.$tytul.'",gabinet = "'.$gabinet.'"';
+            $sql = 'INSERT INTO pracownicy (imie, nazwisko, email, tytul,gabinet) VALUES ("' . $imie . '","' . $nazwisko . '","' . $email . '","' . $tytul .'","' . $gabinet.'")';
+
             mysqli_query($conn, $sql);
         }
         fclose($file);
