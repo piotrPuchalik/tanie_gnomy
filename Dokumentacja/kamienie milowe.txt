@@ -10,11 +10,11 @@ Drugi kamień milowy:
 - Sekcja PLAN
 - Sekcja SZUKAJ
 - Możliwość dodawania / edycji / kasowania pracowników Wydziału
-- Możliwość importu pracowników wydziału
+
 
 
 Trzeci kamień milowy:
-- Możliwość edycji manulanej oraz importu z CSV informacji o gabinetach / laboratoriach gdzie najczęściej przebywa danych pracownik
+- Możliwość edycji manualnej oraz importu z CSV informacji o gabinetach / laboratoriach gdzie najczęściej przebywa danych pracownik
 - Możliwość zarządzania budynkami, piętrami (wgrywanie obrazków planów, relacja do budynku),
 pomieszczeniami (relacja na piętro budynku, współrzędne pomieszczenia na planie piętra, nazwa
 pomieszczenia zgodna z Planem ZUT).
